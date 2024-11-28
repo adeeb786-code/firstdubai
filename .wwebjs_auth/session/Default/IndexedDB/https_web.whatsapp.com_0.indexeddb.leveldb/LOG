@@ -1,0 +1,27 @@
+2024/11/28-17:51:16.365 6248 Reusing MANIFEST C:\Users\Adeeb\OneDrive - K L University\Desktop\Saudi\backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/11/28-17:51:16.365 6248 Recovering log #395
+2024/11/28-17:51:16.394 6248 Reusing old log C:\Users\Adeeb\OneDrive - K L University\Desktop\Saudi\backend\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000395.log 
+2024/11/28-17:51:17.362 1e9c Compacting 1@1 + 3@2 files
+2024/11/28-17:51:17.443 1e9c Generated table #398@1: 58623 keys, 2212147 bytes
+2024/11/28-17:51:17.516 1e9c Generated table #399@1: 44294 keys, 2207081 bytes
+2024/11/28-17:51:17.585 1e9c Generated table #400@1: 49432 keys, 1605142 bytes
+2024/11/28-17:51:17.586 1e9c Compacted 1@1 + 3@2 files => 6024370 bytes
+2024/11/28-17:51:17.587 1e9c compacted to: files[ 0 0 3 0 0 0 0 ]
+2024/11/28-17:51:17.588 1e9c Delete type=2 #391
+2024/11/28-17:51:17.588 1e9c Delete type=2 #392
+2024/11/28-17:51:17.588 1e9c Delete type=2 #393
+2024/11/28-17:51:17.588 1e9c Delete type=2 #396
+2024/11/28-17:51:18.069 6248 Level-0 table #402: started
+2024/11/28-17:51:18.076 6248 Level-0 table #402: 158084 bytes OK
+2024/11/28-17:51:18.078 6248 Delete type=0 #395
+2024/11/28-17:51:18.079 6248 Manual compaction at level-0 from '\x00T\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00U\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/11/28-17:51:18.131 59b0 Compacting 1@1 + 3@2 files
+2024/11/28-17:51:18.206 59b0 Generated table #403@1: 57633 keys, 2210859 bytes
+2024/11/28-17:51:18.290 59b0 Generated table #404@1: 45457 keys, 2209724 bytes
+2024/11/28-17:51:18.356 59b0 Generated table #405@1: 47596 keys, 1544450 bytes
+2024/11/28-17:51:18.356 59b0 Compacted 1@1 + 3@2 files => 5965033 bytes
+2024/11/28-17:51:18.358 59b0 compacted to: files[ 0 0 3 0 0 0 0 ]
+2024/11/28-17:51:18.359 59b0 Delete type=2 #398
+2024/11/28-17:51:18.359 59b0 Delete type=2 #399
+2024/11/28-17:51:18.359 59b0 Delete type=2 #400
+2024/11/28-17:51:18.359 59b0 Delete type=2 #402
