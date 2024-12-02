@@ -7,6 +7,11 @@ const qrcode = require('qrcode-terminal');
 const User = require('./models/User'); // Import the User model
 const path = require('path');
 const { google } = require('googleapis');
+const compression = require('compression');
+const apicache = require('apicache');
+const helmet = require('helmet');
+const { SitemapStream, streamToPromise } = require('sitemap');
+const fs = require('fs');
 
 // Load environment variables
 dotenv.config();
@@ -19,6 +24,10 @@ app.use(cors({
   origin: 'http://localhost:5173', // Your frontend URL
 }));
 app.use(express.json());
+app.use(compression());
+app.use(helmet());
+
+let cache = apicache.middleware;
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI, { serverSelectionTimeoutMS: 30000 }) // 30 seconds timeout
@@ -67,26 +76,7 @@ const sheetsClient = new google.auth.JWT(
 async function writeToGoogleSheets(data) {
   const sheets = google.sheets({ version: 'v4', auth: sheetsClient });
   const spreadsheetId = process.env.SPREADSHEET_ID; // Use the correct Google Sheets ID
-  const range = 'Sheet1!A:E'; // Adjust the range as needed
-
-  // Check if headers exist, if not, add them
-  const headers = ['Name', 'Email', 'Phone', 'Message', 'Timestamp'];
-  const headerRange = 'Sheet1!A1:E1';
-  const headerResponse = await sheets.spreadsheets.values.get({
-    spreadsheetId,
-    range: headerRange,
-  });
-
-  if (!headerResponse.data.values || headerResponse.data.values.length === 0) {
-    await sheets.spreadsheets.values.update({
-      spreadsheetId,
-      range: headerRange,
-      valueInputOption: 'RAW',
-      resource: {
-        values: [headers],
-      },
-    });
-  }
+  const range = 'Sheet1!A:D'; // Adjust the range as needed
 
   const request = {
     spreadsheetId,
@@ -109,7 +99,7 @@ async function writeToGoogleSheets(data) {
 }
 
 // API endpoint to handle form submissions
-app.post('/api/send-whatsapp', async (req, res) => {
+app.post('/api/send-whatsapp', cache('5 minutes'), async (req, res) => {
   const { name, email, phone, message } = req.body;
 
   try {
@@ -141,7 +131,44 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
+// Serve robots.txt
+app.get('/robots.txt', (req, res) => {
+  res.type('text/plain');
+  res.send(`User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Disallow: /register/
+Allow: /
+
+Sitemap: https://www.lovosistech.com/sitemap.xml`);
+});
+
+// Sitemap generation
+const sitemapUrls = [
+  { url: '/', changefreq: 'daily', priority: 1.0 },
+  { url: '/audiovideo', changefreq: 'weekly', priority: 0.8 },
+  { url: '/service', changefreq: 'weekly', priority: 0.8 },
+  { url: '/client', changefreq: 'weekly', priority: 0.8 },
+  { url: '/about', changefreq: 'monthly', priority: 0.5 },
+  { url: '/contact', changefreq: 'monthly', priority: 0.5 },
+];
+
+app.get('/sitemap.xml', async (req, res) => {
+  try {
+    const smStream = new SitemapStream({ hostname: 'https://www.lovosistech.com' });
+    sitemapUrls.forEach(url => smStream.write(url));
+    smStream.end();
+
+    const sitemap = await streamToPromise(smStream).then(data => data.toString());
+    res.header('Content-Type', 'application/xml');
+    res.send(sitemap);
+  } catch (error) {
+    console.error('Error generating sitemap:', error);
+    res.status(500).end();
+  }
+});
+
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
