@@ -5,10 +5,8 @@ const dotenv = require('dotenv');
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
 const User = require('./models/User'); // Import the User model
-const path = require('path');
 const { google } = require('googleapis');
 const dbConnect = require('./config/db');
-
 
 // Load environment variables
 dotenv.config();
@@ -18,13 +16,13 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL, 
+  origin: process.env.FRONTEND_URL,  // Replace with the actual URL of your frontend (e.g., http://localhost:3000 or https://yourfrontend.com)
   methods: ["POST", "GET"],
 }));
 app.use(express.json());
 
-dbConnect()
-
+// MongoDB connection
+dbConnect();
 
 // WhatsApp client setup
 const client = new Client({
@@ -111,8 +109,7 @@ app.post('/api/send-whatsapp', async (req, res) => {
   }
 });
 
-
-// Serve robots.txt
+// Serve robots.txt (Optional if you want to serve from backend)
 app.get('/robots.txt', (req, res) => {
   res.type('text/plain');
   res.send(`User-agent: *
@@ -124,7 +121,7 @@ Allow: /
 Sitemap: https://www.lovosistech.com/sitemap.xml`);
 });
 
-// Sitemap generation
+// Sitemap generation (Optional if frontend is generating this file)
 const sitemapUrls = [
   { url: '/', changefreq: 'daily', priority: 1.0 },
   { url: '/audiovideo', changefreq: 'weekly', priority: 0.8 },
@@ -133,7 +130,6 @@ const sitemapUrls = [
   { url: '/about', changefreq: 'monthly', priority: 0.5 },
   { url: '/contact', changefreq: 'monthly', priority: 0.5 },
 ];
-
 
 app.get('/sitemap.xml', async (req, res) => {
   try {
@@ -149,10 +145,6 @@ app.get('/sitemap.xml', async (req, res) => {
     res.status(500).end();
   }
 });
-
-app.get("/", (req, res)=>{
-  res.send("hello world")
-})
 
 // Start the server
 app.listen(PORT, () => {
