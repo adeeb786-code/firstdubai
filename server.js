@@ -111,14 +111,6 @@ app.post('/api/send-whatsapp', async (req, res) => {
   }
 });
 
-// Serve static files from the React app (if deployed)
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client/build')));
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/build/index.html'));
-  });
-}
 
 // Serve robots.txt
 app.get('/robots.txt', (req, res) => {
@@ -142,6 +134,7 @@ const sitemapUrls = [
   { url: '/contact', changefreq: 'monthly', priority: 0.5 },
 ];
 
+
 app.get('/sitemap.xml', async (req, res) => {
   try {
     const smStream = new SitemapStream({ hostname: 'https://www.lovosistech.com' });
@@ -156,6 +149,10 @@ app.get('/sitemap.xml', async (req, res) => {
     res.status(500).end();
   }
 });
+
+app.get("/", (req, res)=>{
+  res.send("hello world")
+})
 
 // Start the server
 app.listen(PORT, () => {
