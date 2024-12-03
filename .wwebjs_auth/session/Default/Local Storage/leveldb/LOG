@@ -1,3 +1,6 @@
-2024/12/02-17:51:20.519 5630 Reusing MANIFEST C:\Users\Adeeb\OneDrive - K L University\Desktop\Saudi\backend\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
-2024/12/02-17:51:20.520 5630 Recovering log #29
-2024/12/02-17:51:20.521 5630 Reusing old log C:\Users\Adeeb\OneDrive - K L University\Desktop\Saudi\backend\.wwebjs_auth\session\Default\Local Storage\leveldb/000029.log 
+2024/12/03-14:58:36.059 2364 Reusing MANIFEST C:\Users\LENOVO\Downloads\Saudi\backend\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
+2024/12/03-14:58:36.060 2364 Recovering log #39
+2024/12/03-14:58:36.061 2364 Reusing old log C:\Users\LENOVO\Downloads\Saudi\backend\.wwebjs_auth\session\Default\Local Storage\leveldb/000039.log 
+2024/12/03-14:59:36.680 f54 Level-0 table #43: started
+2024/12/03-14:59:36.692 f54 Level-0 table #43: 18235 bytes OK
+2024/12/03-14:59:36.694 f54 Delete type=0 #39

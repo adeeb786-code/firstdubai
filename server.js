@@ -7,11 +7,8 @@ const qrcode = require('qrcode-terminal');
 const User = require('./models/User'); // Import the User model
 const path = require('path');
 const { google } = require('googleapis');
-const compression = require('compression');
-const apicache = require('apicache');
-const helmet = require('helmet');
-const { SitemapStream, streamToPromise } = require('sitemap');
-const fs = require('fs');
+const dbConnect = require('./config/db');
+
 
 // Load environment variables
 dotenv.config();
@@ -21,21 +18,13 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:5173', // Your frontend URL
+  origin: process.env.FRONTEND_URL, 
+  methods: ["POST", "GET"],
 }));
 app.use(express.json());
-app.use(compression());
-app.use(helmet());
 
-let cache = apicache.middleware;
+dbConnect()
 
-// MongoDB connection
-mongoose.connect(process.env.MONGO_URI, { serverSelectionTimeoutMS: 30000 }) // 30 seconds timeout
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => {
-    console.error('MongoDB connection error:', err);
-    process.exit(1);
-  });
 
 // WhatsApp client setup
 const client = new Client({
@@ -76,7 +65,7 @@ const sheetsClient = new google.auth.JWT(
 async function writeToGoogleSheets(data) {
   const sheets = google.sheets({ version: 'v4', auth: sheetsClient });
   const spreadsheetId = process.env.SPREADSHEET_ID; // Use the correct Google Sheets ID
-  const range = 'Sheet1!A:D'; // Adjust the range as needed
+  const range = 'Sheet1!A:E'; // Adjust the range as needed
 
   const request = {
     spreadsheetId,
@@ -99,7 +88,7 @@ async function writeToGoogleSheets(data) {
 }
 
 // API endpoint to handle form submissions
-app.post('/api/send-whatsapp', cache('5 minutes'), async (req, res) => {
+app.post('/api/send-whatsapp', async (req, res) => {
   const { name, email, phone, message } = req.body;
 
   try {
@@ -118,7 +107,7 @@ app.post('/api/send-whatsapp', cache('5 minutes'), async (req, res) => {
     res.status(200).json({ success: true, message: 'Message sent successfully!' });
   } catch (error) {
     console.error('Error sending WhatsApp message:', error);
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: error.message, details: error });
   }
 });
 
@@ -170,5 +159,5 @@ app.get('/sitemap.xml', async (req, res) => {
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });

@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "digiimpact-62722",
+  "private_key_id": "5b8eb113af439c84967fe9291433e61936053b5d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDI8BC9hxe9lCo+\nH8/l8MqpkVJYEjrb8EMXUCpcJj3DJknqINdDK+84/ivNo5HmT6DGo1oYNSRGeL+x\nCTGctlmUP7WvXsDSTb6H9mR8mEKqKnHtmpYEE9Zof0/diARfxlEOCOqaXk3VYYy4\nWGaj1xoaFZdD5DL7sHT+tjSNw0uEfkVvEcFKgdflAFp7Qw7go1qWXm6dUaNI38e8\nN/eCMqT/hPE5hOn1PtbcmEcHNwt0XFO4eBlMogmH+exFY0QBtjx735WQIbqvxy+z\np9mnORfD/OQ1Pt3IqVaOiGS4p7tccr1vV+GsO1yI0UyC8SSdL38ReybsHaoDkYeN\nFQmeRVv9AgMBAAECggEABqRupvL2JTsvobnQ6ouyLjbOA+XeX/KYAuLZqnuWR/DD\n8HWKUUjYFlGBxpycC6dqfisTW8nJW6Aoy8QawHVM++pNhV62D6I6kk4GrTYBmG/h\nVIj9hfb7oHhoWZrP4jRVpL5p2vDKQr3tyICLmcV8sh4LvZ/MQDlpfdBSHmvZ2xTl\nXTeJ7UvgS1ICKiNvWOqbRbDr8fbsQhUAZrKFI45/fRaPyieHQvispBEzs6Qmwjh/\n6iPy898b83yp2Ms0UeJcoxvUBv+SVYLF+Ldjq6qWuh2a8zEQ2o3TdOOHnJiBcaTy\nMJ9ry+pPRyXOG26s5wXFGYqsxKpbjvXcxLBgntdotQKBgQDlH7MJS4Zc4Ur0rG9T\nGiIVJXjdTvfQ+O3K7fbOva0KMX5m7qmIrst9fSsjyh67Lzpq9/TinAXKVQXnFM5B\nEa1mxwHUO+cKIpSMXgYFZKSfPLpZpCv9KH+ESW95iho104v0jDWd/lTrc7i1aLED\n2xv83WlortfRfm3jFUcF9DM7KwKBgQDggflH5F4QKx+oIf8PabLlWmNsq8CEFdO/\nSxCcriWY5T9xi3CTVfRzMoqfTHC0qvqG2eJGuyuno4Ks+7jAgCJmBFq50hLcptxv\n+bCA7dLd96GOeSsc+CsAdMmnbHVX55dpvxJHeLZozqz6SLLprWs5fnTmLFwvxiYW\npz1tCxURdwKBgBm/rzobL7VeaDMI8dXP+QaRWHzedAEbCHYmufbP4BNmLoNYzNqc\nciffGisCeuOkUhdVWELjL89mMKygbPFpECidsrnsJXHBIxqHMnwGrG1swLB0P7FK\njNIMAqgQ+hMUfAT2gMwJmfd/4MEaS9JYHFQVedQW2hAj+itr57hmkh9TAoGBANJl\nvCI9yFFKuK4uvgPJwNfkL40mIJMoiXqadIUBR0bUgPJ+BRBu21oiIXtMfcsy+Pnr\ns30p562BNPO8K9ZrvtDwf73pO7gBwFBIJbuOJbHTYlpM/7R0dohE6r62i/nHlkSJ\nxi2o2Pm7xqv/+Xu5A+Wrtw4GwJYdEpDkRlKssh/dAoGAHwCBUimeYB13XyQsICOd\nhfYJdTaoXssQvmK36p/aSgdAShjNYmH59Od+6vrv5OsPmRNlBqA7U4CjrR6UlNz/\nHq5FfQGQ/Ni26ixKZtRzvZ7hg+DXbc7mvADWbVP5KygtHGFVX58arTlu8osNZSXE\nX4e7UmZdt0Dx8eZfKpiLkKE=\n-----END PRIVATE KEY-----\n",
+  "client_email": "google-sheets-access@digiimpact-62722.iam.gserviceaccount.com",
+  "client_id": "117995251327610829814",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/google-sheets-access%40digiimpact-62722.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
