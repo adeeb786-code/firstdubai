@@ -15,10 +15,16 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
+const allowedOrigins = [
+  process.env.FRONTEND_URL_DEV,  // For development (localhost)
+  process.env.FRONTEND_URL_PROD  // For production (Vercel frontend)
+];
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL,  // Replace with the actual URL of your frontend (e.g., http://localhost:3000 or https://yourfrontend.com)
-  methods: ["POST", "GET"],
+  origin: allowedOrigins,  // Allow the specified origins
+  methods: ["POST", "GET"], // Allowed methods
 }));
+
 app.use(express.json());
 
 // MongoDB connection
