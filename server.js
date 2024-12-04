@@ -16,12 +16,11 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 const allowedOrigins = [
-  process.env.FRONTEND_URL_DEV,  // For development (localhost)
   process.env.FRONTEND_URL_PROD  // For production (Vercel frontend)
 ];
 
 app.use(cors({
-  origin: allowedOrigins,  // Allow the specified origins
+  origin: "*",  // Allow the specified origins
   methods: ["POST", "GET"], // Allowed methods
 }));
 
